@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { HomeComponent } from '../../home/home.component';
 import { SimulacionComponent } from '../../simulacion/simulacion.component';
+import { GraficasComponent } from '../../graficas/graficas.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,10 @@ import { SimulacionComponent } from '../../simulacion/simulacion.component';
     NotificationsComponent,
     HomeComponent,
     SimulacionComponent,
+    GraficasComponent
+  ],
+  exports:[
+    
   ]
 })
 
