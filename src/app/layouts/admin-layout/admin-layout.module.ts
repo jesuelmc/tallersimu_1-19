@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { HomeComponent } from '../../home/home.component';
+import { SimulacionComponent } from '../../simulacion/simulacion.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { HomeComponent } from '../../home/home.component';
     MapsComponent,
     NotificationsComponent,
     HomeComponent,
+    SimulacionComponent,
   ]
 })
 

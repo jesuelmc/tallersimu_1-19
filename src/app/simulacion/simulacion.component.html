@@ -1,0 +1,22 @@
+<div class="panel-header">
+  <div class="header text-center">
+    <h2 class="title" style="font-family: cursive;">TALLER DE SIMULACIÓN DE SISTEMAS</h2>
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col">
+      <div class="chart-area">
+          <canvas baseChart id="lineChartExample"
+                      [datasets]="lineChartData"
+                      [labels]="lineChartLabels"
+                      [colors]="lineChartColors"
+                      [options]="lineChartOptions"
+                      [chartType]="lineChartType"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+</div>
