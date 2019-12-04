@@ -540,9 +540,9 @@ const DATA: DataLinea[] = [
         "time": "Domingo"
       }
     ],
-    "nombre": "Linea Roja",
+    "nombre": "Aceptados",
     "idlinea": 1,
-    "color": "#FF0000"
+    "color": "#4721cb"
   },
   {
     "datameses": [
@@ -1057,9 +1057,9 @@ const DATA: DataLinea[] = [
         "time": "Domingo"
       }
     ],
-    "nombre": "Linea Amarilla",
+    "nombre": "Rechazados",
     "idlinea": 2,
-    "color": "#FFFF00"
+    "color": "#23c4b7"
   },
   {
     "datameses": [
@@ -1574,8 +1574,8 @@ const DATA: DataLinea[] = [
         "time": "Domingo"
       }
     ],
-    "nombre": "Linea Verde",
+    "nombre": "opcion",
     "idlinea": 3,
-    "color": "#00FF00"
+    "color": "#d421c7"
   }
 ];

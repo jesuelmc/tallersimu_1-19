@@ -305,8 +305,8 @@ export class SimulacionComponent implements OnInit {
     this.gradientStroke.addColorStop(1, this.chartColor);
 
     this.gradientFill = this.ctx.createLinearGradient(0, 200, 0, 50);
-    this.gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    this.gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
+    this.gradientFill.addColorStop(0, "rgba(238, 196, 243, 0)");
+    this.gradientFill.addColorStop(1, "rgba(82,10, 91, 0.35)");
     /** */
     this.lineBigDashboardChartData = [];
     this.lineBigDashboardChartColors = [];
@@ -319,7 +319,7 @@ export class SimulacionComponent implements OnInit {
 
       this.lineBigDashboardChartData.push(
         {
-          label: "Pasajeros",
+          label: "Personas",
           pointBorderWidth: 1,
           pointHoverRadius: 7,
           pointHoverBorderWidth: 2,
@@ -335,7 +335,7 @@ export class SimulacionComponent implements OnInit {
           borderColor: element.color,
           pointBorderColor: element.color,
           pointBackgroundColor: element.color,
-          pointHoverBackgroundColor: "#FFFFFF",
+          pointHoverBackgroundColor: "#ffffff",
           pointHoverBorderColor: element.color,
         }
       );

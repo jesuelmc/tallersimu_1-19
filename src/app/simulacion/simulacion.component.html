@@ -1,24 +1,24 @@
 
 
-  <div class="card card-chart text-light bg-dark">
+  <div class="card card-chart text-light bg-secondary">
     <div class="card-header">
       <p>
         <b>Temporal:</b> {{ initialpoint.time }} &nbsp;&nbsp;&nbsp; <b>Cantidad
           denuncias: </b>{{ initialpoint.value }}
       </p>
-      <button class="btn btn-round btn-default btn-simple">Resultados </button>
+      <button class="btn btn-round btn-default btn-simple bg-light">Resultados </button>
       <button type="button" (click)="playSimulation()" [disabled]="disableSimulacionBtn"
-        class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret">
+        class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret bg-light">
         <i class="now-ui-icons media-1_button-play"></i>
       </button>
 
       <button type="button" (click)="stopSimulation()" [disabled]="false"
-        class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret">
+        class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret bg-light">
         <i class="now-ui-icons media-1_button-pause"></i>
       </button>
 
       <button type="button" (click)="offSimulation()" [disabled]="false"
-        class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret">
+        class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret bg-light">
         <i class="now-ui-icons media-1_button-power"></i>
       </button>
     </div>
