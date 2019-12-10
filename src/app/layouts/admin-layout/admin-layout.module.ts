@@ -17,6 +17,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { HomeComponent } from '../../home/home.component';
 import { SimulacionComponent } from '../../simulacion/simulacion.component';
 import { GraficasComponent } from '../../graficas/graficas.component';
+import { AnimacionComponent } from '../../animacion/animacion.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { GraficasComponent } from '../../graficas/graficas.component';
     NotificationsComponent,
     HomeComponent,
     SimulacionComponent,
-    GraficasComponent
+    GraficasComponent,
+    AnimacionComponent
   ],
   exports:[
     
