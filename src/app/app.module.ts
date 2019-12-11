@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -29,9 +30,14 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
     RouterModule,
     AppRoutingModule,
     NgbModule,
+<<<<<<< HEAD
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+=======
+    ChartsModule,
+    ToastrModule.forRoot()
+>>>>>>> d530c06904c7743a50df7f9d7ed3e0abc483ddc1
   ],
   declarations: [
     AppComponent,
