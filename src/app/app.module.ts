@@ -30,14 +30,10 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
     RouterModule,
     AppRoutingModule,
     NgbModule,
-<<<<<<< HEAD
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-=======
     ChartsModule,
-    ToastrModule.forRoot()
->>>>>>> d530c06904c7743a50df7f9d7ed3e0abc483ddc1
   ],
   declarations: [
     AppComponent,
