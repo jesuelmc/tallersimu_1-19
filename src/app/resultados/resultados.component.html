@@ -3,6 +3,16 @@
     <h2 class="title" style="font-family: cursive;">TALLER DE SIMULACIÓN DE SISTEMAS</h2>
   </div>
 </div>
-<div>
-  aqui empiezas chino
+<div class="container">
+  <div style="display: block;">
+    <canvas baseChart 
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [chartType]="barChartType">
+    </canvas>
+  </div>
+  <button class="btn btn-secondary" (click)="randomize()">Update</button>
 </div>
