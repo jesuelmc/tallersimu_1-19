@@ -18,6 +18,8 @@ import { HomeComponent } from '../../home/home.component';
 import { SimulacionComponent } from '../../simulacion/simulacion.component';
 import { GraficasComponent } from '../../graficas/graficas.component';
 import { AnimacionComponent } from '../../animacion/animacion.component';
+import { DatosInicialesComponent } from '../../datos-iniciales/datos-iniciales.component';
+import { ResultadosComponent } from '../../resultados/resultados.component';
 
 @NgModule({
   imports: [
@@ -40,7 +42,9 @@ import { AnimacionComponent } from '../../animacion/animacion.component';
     HomeComponent,
     SimulacionComponent,
     GraficasComponent,
-    AnimacionComponent
+    AnimacionComponent,
+    DatosInicialesComponent,
+    ResultadosComponent
   ],
   exports:[
     
