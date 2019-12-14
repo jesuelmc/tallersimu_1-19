@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Demandantes } from '../shared/models/demandantes';
 import { SimuService } from '../service/simu.service';
-
+import { Simulacion } from '../shared/models/simulacion';
+import { NgForm } from "@angular/forms/src/directives/ng_form";
 @Component({
   selector: 'app-datos-iniciales',
   templateUrl: './datos-iniciales.component.html',
@@ -11,15 +12,70 @@ import { SimuService } from '../service/simu.service';
 export class DatosInicialesComponent implements OnInit {
   demandantes$: Observable<Demandantes[]>;
   demandantes: Demandantes[];
-
-  constructor(private demandanteService: SimuService) { }
+    allanamiento=true;  
+    amenaza=true;
+    asesinato=true;
+    conduccionPel=true;
+    estafa=true;
+    robo=true;
+    violaciones=true;
+  simu:Simulacion={
+    allanamiento:0,  
+    amenaza:0,
+    asesinato:0,
+    conduccionPel:0, 
+    estafa:0,
+    numJueces:10, 
+    numSalas:10,
+    otros:120, 
+    porAntecedentes:50,
+    porDenuncia:50,
+    robo:0,
+    violaciones:0,
+  };
+  
+  constructor(private simuService: SimuService) { }
 
   ngOnInit() {
-    this.demandantes$=this.demandanteService.getDenunciantes();
-    this.demandantes$.subscribe(dem => {
-      this.demandantes = dem;
-      console.log(this.demandantes);
-    });
   }
-
+  guardarSimu(myForm: NgForm){
+    console.log(myForm);
+    this.updateDatos();
+    this.simuService.updateSimu(this.simu);
+  }
+  prueba(){
+    this.updateDatos();
+    this.simuService.updateSimu(this.simu);
+  }
+  updateDatos(){
+    if(this.allanamiento){
+      this.simu.allanamiento=Math.floor(Math.random() * 15);
+      this.simu.otros=this.simu.otros-10;
+    }
+    if(this.amenaza){
+      this.simu.amenaza=Math.floor(Math.random() * 15);
+      this.simu.otros=this.simu.otros-10;
+    }
+    if(this.asesinato){
+      this.simu.asesinato=Math.floor(Math.random() * 15);
+      this.simu.otros=this.simu.otros-10;
+    }
+    if(this.conduccionPel){
+      this.simu.conduccionPel=Math.floor(Math.random() * 15);
+      this.simu.otros=this.simu.otros-10;
+    }
+    if(this.estafa){
+      this.simu.estafa=Math.floor(Math.random() * 15);
+      this.simu.otros=this.simu.otros-10;
+    }
+    if(this.robo){
+      this.simu.robo=Math.floor(Math.random() * 15);
+      this.simu.otros=this.simu.otros-10;
+    }
+    if(this.violaciones){
+      this.simu.violaciones=Math.floor(Math.random() * 15);
+      this.simu.otros=this.simu.otros-10;
+    }
+  }
 }
+ 
