@@ -19,6 +19,7 @@ import { GraficasComponent } from '../../graficas/graficas.component';
 import { AnimacionComponent } from '../../animacion/animacion.component';
 import { DatosInicialesComponent } from '../../datos-iniciales/datos-iniciales.component';
 import { ResultadosComponent } from '../../resultados/resultados.component';
+import { InstruccionesComponent } from '../../instrucciones/instrucciones.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { ResultadosComponent } from '../../resultados/resultados.component';
     GraficasComponent,
     AnimacionComponent,
     DatosInicialesComponent,
-    ResultadosComponent
+    ResultadosComponent,
+    InstruccionesComponent,
   ],
   exports:[
     
