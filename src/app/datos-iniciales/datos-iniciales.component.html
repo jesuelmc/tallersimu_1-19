@@ -1,65 +1,86 @@
-<div class="panel-header">
-  <div class="header text-center">
-    <h2 class="title" style="font-family: cursive;">TALLER DE SIMULACIÓN DE SISTEMAS</h2>
-  </div>
+<div>
+  <br> <br>
+  <br> <br>
 </div>
 <div class="container">
-  <form (ngSubmit)="guardarSimu()" >
-    <div class="form-group">
-      <label for="example">Numero de Salas disponibles</label>
-      <select [(ngModel)]="simu.numSalas" name="cantSalas" id="cantSalas" class="form-control bg-light text-dark">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-      </select>
-    </div>
-    <div class="form-group">
+  <form (ngSubmit)="guardarSimu()">
+      <div class="form-group">
+        <label for="example">Numero de Salas disponibles</label>
+        <div class="col-xs-3">
+        <select [(ngModel)]="simu.numSalas" name="cantSalas" id="cantSalas" class="form-control bg-light text-dark" placeholder="Selecione un Numero">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+        </select>
+       </div>
+      </div>
+      <div class="col-xs-3">
+    <div class="form-group" col-md-2>
       <label for="customRange2">Jueces tecnicos</label>
-      <input type="range" class="custom-range" [(ngModel)]="simu.numJueces" name="jueces_tecnicos" id="jueces_tecnicos" value="10" min="5" max="15" oninput="jueces_tecnicos_out.value = jueces_tecnicos.value">
+      <input type="range" class="custom-range" [(ngModel)]="simu.numJueces" name="jueces_tecnicos" id="jueces_tecnicos"
+        value="10" min="5" max="15" oninput="jueces_tecnicos_out.value = jueces_tecnicos.value">
       <output name="jueces_tecnicos_out" id="jueces_tecnicos_out">10</output>
     </div>
-    <p>Selecione los tipos de delitos</p>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="violaciones"  name="violaciones" id="violaciones">
-      <label class="custom-control-label" for="violaciones">violaciones</label>
+      <form (ngSubmit)="guardarSimu()">
+        <div class="form-group">
+          <label for="example">Numero de Salas disponibles</label>
+          <select [(ngModel)]="simu.numSalas" name="cantSalas" id="cantSalas" class="form-control bg-light text-dark"
+            placeholder="Selcecione un numero">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+          </select>
+        </div>
+        <p>Selecione los tipos de delitos</p>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="violaciones" name="violaciones"
+            id="violaciones">
+          <label class="custom-control-label" for="violaciones">violaciones</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="asesinato" name="asesinato" id="asesinato">
+          <label class="custom-control-label" for="asesinato">asesinato</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="robo" name="robo" id="robo">
+          <label class="custom-control-label" for="robo">robo</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="allanamiento" name="allanamiento"
+            id="allanamiento">
+          <label class="custom-control-label" for="allanamiento">allanamiento</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="amenaza" name="amenaza" id="amenaza">
+          <label class="custom-control-label" for="amenazas">amenaza</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="conduccionPel" name="conduccionPel"
+            id="conduccionPel">
+          <label class="custom-control-label" for="conduccionPel">conduccion_peligrosa</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="estafa" name="estafa" id="estafa">
+          <label class="custom-control-label" for="estafa">estafa</label>
+        </div>
+        <div class="form-group">
+          <label for="example">Porcentaje de acusados con antecedentes</label>
+          <input type="range" class="custom-range" [(ngModel)]="simu.porAntecedentes" name="porAcusados"
+            id="porAcusados" value="50" min="25" max="80" oninput="porAcusados_out.value = porAcusados.value">
+          <output name="porAcusados_out" id="porAcusados_out">50</output>
+        </div>
+        <div class="form-group">
+          <label for="example">Denuncias ante policia(izq)-fiscal(der)</label>
+          <input type="range" class="custom-range" [(ngModel)]="simu.porDenuncia" name="denPolFis" id="denPolFis"
+            value="50" min="25" max="85" oninput="denPolFis_out.value = denPolFis.value">
+          <output name="denPolFis_out" id="denPolFis_out">50</output>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
     </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="asesinato" name="asesinato" id="asesinato">
-      <label class="custom-control-label" for="asesinato">asesinato</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="robo"  name="robo" id="robo">
-      <label class="custom-control-label" for="robo">robo</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="allanamiento"  name="allanamiento" id="allanamiento">
-      <label class="custom-control-label" for="allanamiento">allanamiento</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="amenaza"  name="amenaza" id="amenaza">
-      <label class="custom-control-label" for="amenazas">amenaza</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="conduccionPel"  name="conduccionPel" id="conduccionPel">
-      <label class="custom-control-label" for="conduccionPel">conduccion_peligrosa</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="estafa"  name="estafa" id="estafa">
-      <label class="custom-control-label" for="estafa">estafa</label>
-    </div>
-    <div class="form-group">
-      <label for="example">Porcentaje de acusados con antecedentes</label>
-      <input type="range" class="custom-range" [(ngModel)]="simu.porAntecedentes" name="porAcusados" id="porAcusados" value="50" min="25" max="80" oninput="porAcusados_out.value = porAcusados.value">
-      <output name="porAcusados_out" id="porAcusados_out">50</output>
-    </div>
-    <div class="form-group">
-      <label for="example">Denuncias ante policia(izq)-fiscal(der)</label>
-      <input type="range" class="custom-range" [(ngModel)]="simu.porDenuncia" name="denPolFis" id="denPolFis" value="50" min="25" max="85" oninput="denPolFis_out.value = denPolFis.value">
-      <output name="denPolFis_out" id="denPolFis_out">50</output>
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
-  </form>
-</div>
