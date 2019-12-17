@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Simulacion } from '../shared/models/simulacion';
 import { SimuService } from '../service/simu.service';
 import { Acusado } from '../shared/models/acusado';
-let x: number;
+
 @Component({
   selector: 'app-animacion',
   templateUrl: './animacion.component.html',
@@ -14,25 +14,37 @@ let x: number;
 export class AnimacionComponent implements OnInit {
   simu$: Observable<Simulacion[]>;
   simu: Simulacion[];
-  acu:Acusado;
+  si = {
+      allanamiento:0,    
+      amenaza:0, 
+      asesinato:0, 
+      conduccionPel:0,
+      estafa:0,
+      numJueces:0, 
+      numSalas:0, 
+      otros:0,
+      porAntecedentes:0, 
+      porDenuncia:0,
+      robo:0, 
+      violaciones:0,
+     };
   constructor(private calSimu: CalculoService, private simuService: SimuService) { }
-
+  acusados:Acusado[];
+  acusado:Acusado;
   ngOnInit() {
     this.simu$ = this.simuService.getSimulaciones();
     this.simu$.subscribe(simu => {
       this.simu = simu;
     });
-    this.acu.id='1';
-    this.acu.Policica_fiscal=true;
   }
   prueba() {
     this.crearPolicia('poli');
   }
   pruebaF() {
-    this.moverFiscal('poli');
+    this.getAcusados();
   }
   pruebamover() {
-    this.iniSimu(this.acu);
+    
     //this.moverPolicia('poli');
     //this.moverFiscal('poli');
     //this.moverInvestigar('poli');
@@ -207,6 +219,21 @@ export class AnimacionComponent implements OnInit {
         this.moverPolicia(acu.id);
       }
     }, 1000);
+  }
+  getAcusados(){
+    this.si.allanamiento=parseInt(document.getElementById('allanamiento').textContent);
+    this.si.amenaza=parseInt(document.getElementById('amenaza').textContent);
+    this.si.asesinato=parseInt(document.getElementById('asesinato').textContent);
+    this.si.conduccionPel=parseInt(document.getElementById('conduccionPel').textContent);
+    this.si.estafa=parseInt(document.getElementById('estafa').textContent);
+    this.si.numJueces=parseInt(document.getElementById('numJueces').textContent);
+    this.si.numSalas=parseInt(document.getElementById('numSalas').textContent);
+    this.si.otros=parseInt(document.getElementById('otros').textContent);
+    this.si.porDenuncia=parseInt(document.getElementById('porDenuncia').textContent);
+    this.si.porAntecedentes=parseInt(document.getElementById('porAntecedentes').textContent);
+    this.si.robo=parseInt(document.getElementById('robo').textContent);
+    this.si.violaciones=parseInt(document.getElementById('violaciones').textContent);
+    console.log(this.si);
   }
 }
 
