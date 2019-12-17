@@ -22,28 +22,74 @@ export class AnimacionComponent implements OnInit {
       this.simu=simu;
     });
   }
- 
-   otro(){
-  var para = document.createElement("img");                 // Create a <p> element
-  para.src="../../assets/img/randy.png";                // Insert text
-  para.width=100;
-  para.id='img';
-  para.style.position='absolute';
-  para.style.left = 100+'px';
-  document.getElementById("div_img").appendChild(para);
+   prueba(){
+     this.crearPolicia('poli');
    }
-   rigth(){
-    var img=document.getElementById('img');
-    var pos = 100;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (pos == 350) {
+   pruebaF(){
+    this.crearFiscal('fis');
+  }
+   pruebamover(){
+    this.moverPolicia('poli');
+    this.moverFiscal('poli');
+  }
+   crearPolicia(id:string){
+    var para = document.createElement("img");
+    para.src="../../assets/img/randy.png";  
+    para.width=100;
+    para.id=id;
+    para.style.position='absolute';
+    para.style.left = 140+'px';
+    para.style.top = 450+'px';
+    document.getElementById("div_img").appendChild(para);
+   }
+   crearFiscal(id:string){
+    var para = document.createElement("img");
+    para.src="../../assets/img/randy.png";
+    para.width=100;
+    para.id=id;
+    para.style.position='absolute';
+    para.style.left = 140+'px';
+    para.style.top = 800+'px';
+    document.getElementById("div_img").appendChild(para);
+   }
+   mover(id_img:string,x:number,y:number,xFin:number,yFin:number){
+    var img=document.getElementById(id_img);
+    var posx = x;
+    var posy = y;
+    var id = setInterval(frame, 1);
+    function frame() {
+      if (posx == xFin) {
+        clearInterval(id);
+      }
+      else {
+        if(x<xFin){
+          posx++;  
+          img.style.left = posx + 'px'; 
+        }
+        else{
+          posx--;  
+          img.style.left = posx + 'px'; 
+        }  
+      }
+      if (posy == yFin) {
         clearInterval(id);
       } else {
-        pos++;  
-        img.style.left = pos + 'px'; 
+        if(y<yFin){
+          posy++;  
+          img.style.top = posy + 'px'; 
+        }
+        else{
+          posy--;  
+          img.style.top = posy + 'px'; 
+        }
       }
     }
+   }
+   moverPolicia(id:string){
+    this.mover(id,140,450,400,600);
+   }
+   moverFiscal(id:string){
+    this.mover(id,140,800,400,600);
    }
 }
 
