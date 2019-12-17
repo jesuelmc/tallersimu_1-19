@@ -10,20 +10,41 @@
 </div>
 
 <div *ngIf="simu" style="display:flex" >
-    <p id="allanamiento">{{simu[4].allanamiento}}</p>
-    <p id="amenaza">{{simu[4].amenaza}}</p>
-    <p id="asesinato">{{simu[4].asesinato}}</p>
-    <p id="conduccionPel">{{simu[4].conduccionPel}}</p>
-    <p id="estafa">{{simu[4].estafa}}</p>
-    <p id="numJueces">{{simu[4].numJueces}}</p>
-    <p id="numSalas">{{simu[4].numSalas}}</p>
-    <p id="otros">{{simu[4].otros}}</p>
-    <p id="porAntecedentes">{{simu[4].porAntecedentes}}</p>
-    <p id="porDenuncia">{{simu[4].porDenuncia}}</p>
-    <p id="robo">{{simu[4].robo}}</p>
-    <p id="violaciones">{{simu[4].violaciones}}</p>
-
-  </div>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr class="text-center">
+          <th style="font-size: 15px;" scope="col">Allanamiento</th>
+          <th style="font-size: 15px;" scope="col">Amenaza</th>
+          <th style="font-size: 15px;" scope="col">Asesinato</th>
+          <th style="font-size: 15px;" scope="col">Conduccion Peligrosa</th>
+          <th style="font-size: 15px;" scope="col">Estafa</th>
+          <th style="font-size: 15px;" scope="col"># Jueces</th>
+          <th style="font-size: 15px;" scope="col"># Salas</th>
+          <th style="font-size: 15px;" scope="col">Otros</th>
+          <th style="font-size: 15px;" scope="col">% Antecedentes</th>
+          <th style="font-size: 15px;" scope="col">% Denuncias</th>
+          <th style="font-size: 15px;" scope="col">Robo</th>
+          <th style="font-size: 15px;" scope="col">Violaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center">
+          <td id="allanamiento">{{simu[4].allanamiento}}</td>
+          <td id="amenaza">{{simu[4].amenaza}}</td>
+          <td id="asesinato">{{simu[4].asesinato}}</td>
+          <td id="conduccionPel">{{simu[4].conduccionPel}}</td>
+          <td id="estafa">{{simu[4].estafa}}</td>
+          <td id="numJueces">{{simu[4].numJueces}}</td>
+          <td id="numSalas">{{simu[4].numSalas}}</td>
+          <td id="otros">{{simu[4].otros}}</td>
+          <td id="porAntecedentes">{{simu[4].porAntecedentes}}</td>
+          <td id="porDenuncia">{{simu[4].porDenuncia}}</td>
+          <td id="robo">{{simu[4].robo}}</td>
+          <td id="violaciones">{{simu[4].violaciones}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
 <div>
     <button (click)=prueba() class="btn">pritn</button>
     <button (click)=pruebaF() class="btn">pritn</button>
