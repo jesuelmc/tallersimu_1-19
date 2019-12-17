@@ -1,12 +1,32 @@
-<div class="panel-header">
-  <div class="header text-center">
-    <h2 class="title" style="font-family: cursive;">TALLER DE SIMULACIÓN DE SISTEMAS</h2>
-  </div>
-</div>
+<div style="height:80px"></div>
 <div class="container">
   
-  <img src="../../assets/img/randy.png" alt="" class="animate">
-  <img src="../../assets/img/police.png" alt="" width="50px" height="100px" style="position:relative; top:100px; left:-60px">
-  <div class="animate"></div>
-  
+  <!-- <img src="../../assets/img/randy.png" alt="" class="animate"> -->
+  <!-- <img src="../../assets/img/police.png" alt="" width="50px" height="100px" style="position:relative; top:100px; left:-60px"> -->
+  <p></p>
 </div>
+<div class="container">
+
+</div>
+
+<div *ngIf="simu" style="display:flex" >
+    <p id="allanamiento">{{simu[4].allanamiento}}</p>
+    <p id="amenaza">{{simu[4].amenaza}}</p>
+    <p id="asesinato">{{simu[4].asesinato}}</p>
+    <p id="conduccionPel">{{simu[4].conduccionPel}}</p>
+    <p id="estafa">{{simu[4].estafa}}</p>
+    <p id="numJueces">{{simu[4].numJueces}}</p>
+    <p id="numSalas">{{simu[4].numSalas}}</p>
+    <p id="otros">{{simu[4].otros}}</p>
+    <p id="porAntecedentes">{{simu[4].porAntecedentes}}</p>
+    <p id="porDenuncia">{{simu[4].porDenuncia}}</p>
+    <p id="robo">{{simu[4].robo}}</p>
+    <p id="violaciones">{{simu[4].violaciones}}</p>
+
+  </div>
+<div>
+    <button (click)=otro() class="btn">pritn</button>
+    <button (click)=rigth() class="btn">derecha</button>
+</div>
+<div class='container' id='div_img'>
+</div>  
