@@ -1,5 +1,4 @@
-<div class="container">
-  <br><br>
+<div class="container mt-4">
   <br><br>
   <form (ngSubmit)="guardarSimu()">
 
@@ -19,7 +18,7 @@
       <label for="customRange2" class="col-form-label m-3">Seleccionar un numero de jueces tecnicos</label>
       <input type="range" class="custom-range col-2 m-4" [(ngModel)]="simu.numJueces" name="jueces_tecnicos"
         id="jueces_tecnicos" value="10" min="5" max="15" oninput="jueces_tecnicos_out.value = jueces_tecnicos.value">
-      <output name="jueces_tecnicos_out" id="jueces_tecnicos_out" class="mt-4">10</output><label class="mt-4">%</label>
+      <output name="jueces_tecnicos_out" id="jueces_tecnicos_out" class="mt-4">10</output>
     </div>
     <div class="form-row">
       <label for="example" class="col-form-label m-3">Selecione los tipos de delitos:</label>
@@ -66,11 +65,11 @@
 
     <div class="form-row">
       <label for="example" class="m-4">Denuncias ante: </label>
-      <!--<input type="range" class="custom-range" [(ngModel)]="simu.porDenuncia" name="denPolFis" id="denPolFis" value="50"
+      <input type="range" class="custom-range col-2 m-4" [(ngModel)]="simu.porDenuncia" name="denPolFis" id="denPolFis" value="50"
         min="25" max="85" oninput="denPolFis_out.value = denPolFis.value">
-      <output name="denPolFis_out" id="denPolFis_out">50</output>
-      -->
-      <div class="form-group m-4">
+      <output name="denPolFis_out" id="denPolFis_out" class="mt-4">50</output><label class="mt-4">%</label>
+      
+     <!-- <div class="form-group m-4">
     <div class="custom-control custom-radio">
       <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
       <label class="custom-control-label" for="customControlValidation2">Ante la policia</label>
@@ -80,8 +79,8 @@
       <label class="custom-control-label" for="customControlValidation3">Ante el fiscal</label>
       <div class="invalid-feedback">More example invalid feedback text</div>
     </div>
-  </div>
+  </div>-->
 </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
   </form>
 </div>
