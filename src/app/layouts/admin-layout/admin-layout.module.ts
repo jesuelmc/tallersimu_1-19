@@ -8,7 +8,6 @@ import { UserProfileComponent } from '../../user-profile/user-profile.component'
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
-import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +19,7 @@ import { GraficasComponent } from '../../graficas/graficas.component';
 import { AnimacionComponent } from '../../animacion/animacion.component';
 import { DatosInicialesComponent } from '../../datos-iniciales/datos-iniciales.component';
 import { ResultadosComponent } from '../../resultados/resultados.component';
+import { InstruccionesComponent } from '../../instrucciones/instrucciones.component';
 
 @NgModule({
   imports: [
@@ -37,14 +37,14 @@ import { ResultadosComponent } from '../../resultados/resultados.component';
     UpgradeComponent,
     TypographyComponent,
     IconsComponent,
-    MapsComponent,
     NotificationsComponent,
     HomeComponent,
     SimulacionComponent,
     GraficasComponent,
     AnimacionComponent,
     DatosInicialesComponent,
-    ResultadosComponent
+    ResultadosComponent,
+    InstruccionesComponent,
   ],
   exports:[
     
