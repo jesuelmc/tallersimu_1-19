@@ -1,13 +1,11 @@
-<div class="panel-header">
-  <div class="header text-center">
-    <h2 class="title" style="font-family: cursive;">TALLER DE SIMULACIÓN DE SISTEMAS</h2>
-  </div>
-</div>
-<div class="container">
-  <form (ngSubmit)="guardarSimu()" >
-    <div class="form-group">
-      <label for="example">Numero de Salas disponibles</label>
-      <select [(ngModel)]="simu.numSalas" name="cantSalas" id="cantSalas" class="form-control bg-light text-dark">
+<div class="container mt-4">
+  <br><br>
+  <form (ngSubmit)="guardarSimu()">
+
+    <div class="container form-group row">
+      <label for="example" class="col-form-label m-3">Seleccione un numero de salas disponibles</label>
+      <select [(ngModel)]="simu.numSalas" name="cantSalas" id="cantSalas"
+        class="form-control bg-light text-dark col-1 m-3" placeholder="1">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -16,50 +14,73 @@
         <option>6</option>
       </select>
     </div>
-    <div class="form-group">
-      <label for="customRange2">Jueces tecnicos</label>
-      <input type="range" class="custom-range" [(ngModel)]="simu.numJueces" name="jueces_tecnicos" id="jueces_tecnicos" value="10" min="5" max="15" oninput="jueces_tecnicos_out.value = jueces_tecnicos.value">
-      <output name="jueces_tecnicos_out" id="jueces_tecnicos_out">10</output>
+    <div class="container form-group row">
+      <label for="customRange2" class="col-form-label m-3">Seleccionar un numero de jueces tecnicos</label>
+      <input type="range" class="custom-range col-2 m-4" [(ngModel)]="simu.numJueces" name="jueces_tecnicos"
+        id="jueces_tecnicos" value="10" min="5" max="15" oninput="jueces_tecnicos_out.value = jueces_tecnicos.value">
+      <output name="jueces_tecnicos_out" id="jueces_tecnicos_out" class="mt-4">10</output>
     </div>
-    <p>Selecione los tipos de delitos</p>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="violaciones"  name="violaciones" id="violaciones">
-      <label class="custom-control-label" for="violaciones">violaciones</label>
+    <div class="form-row">
+      <label for="example" class="col-form-label m-3">Selecione los tipos de delitos:</label>
+      <div class="form-group m-4">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="violaciones" name="violaciones"
+            id="violaciones">
+          <label class="custom-control-label" for="violaciones">violaciones</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="asesinato" name="asesinato" id="asesinato">
+          <label class="custom-control-label" for="asesinato">asesinato</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="robo" name="robo" id="robo">
+          <label class="custom-control-label" for="robo">robo</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="allanamiento" name="allanamiento"
+            id="allanamiento">
+          <label class="custom-control-label" for="allanamiento">allanamiento</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="amenaza" name="amenaza" id="amenaza">
+          <label class="custom-control-label" for="amenazas">amenaza</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="conduccionPel" name="conduccionPel"
+            id="conduccionPel">
+          <label class="custom-control-label" for="conduccionPel">conduccion peligrosa</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="estafa" name="estafa" id="estafa">
+          <label class="custom-control-label" for="estafa">estafa</label>
+        </div>
+      </div>
     </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="asesinato" name="asesinato" id="asesinato">
-      <label class="custom-control-label" for="asesinato">asesinato</label>
+    <div class="form-row">
+      <label for="example" class="col-form-label m-3">Porcentaje de acusados con antecedentes</label>
+      <input type="range" class="custom-range col-2 m-4" [(ngModel)]="simu.porAntecedentes" name="porAcusados" id="porAcusados"
+        value="50" min="25" max="80" oninput="porAcusados_out.value = porAcusados.value">
+      <output name="porAcusados_out" id="porAcusados_out" class="mt-4">50</output><label class="mt-4">%</label>
     </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="robo"  name="robo" id="robo">
-      <label class="custom-control-label" for="robo">robo</label>
+
+    <div class="form-row">
+      <label for="example" class="m-4">Denuncias ante la plocia(Izq) o el jusgado(Der): </label>
+      <input type="range" class="custom-range col-2 m-4" [(ngModel)]="simu.porDenuncia" name="denPolFis" id="denPolFis" value="50"
+        min="25" max="85" oninput="denPolFis_out.value = denPolFis.value">
+      <output name="denPolFis_out" id="denPolFis_out" class="mt-4">50</output><label class="mt-4">%</label>
+      
+     <!-- <div class="form-group m-4">
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
+      <label class="custom-control-label" for="customControlValidation2">Ante la policia</label>
     </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="allanamiento"  name="allanamiento" id="allanamiento">
-      <label class="custom-control-label" for="allanamiento">allanamiento</label>
+    <div class="custom-control custom-radio mb-3">
+      <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
+      <label class="custom-control-label" for="customControlValidation3">Ante el fiscal</label>
+      <div class="invalid-feedback">More example invalid feedback text</div>
     </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="amenaza"  name="amenaza" id="amenaza">
-      <label class="custom-control-label" for="amenazas">amenaza</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="conduccionPel"  name="conduccionPel" id="conduccionPel">
-      <label class="custom-control-label" for="conduccionPel">conduccion_peligrosa</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="estafa"  name="estafa" id="estafa">
-      <label class="custom-control-label" for="estafa">estafa</label>
-    </div>
-    <div class="form-group">
-      <label for="example">Porcentaje de acusados con antecedentes</label>
-      <input type="range" class="custom-range" [(ngModel)]="simu.porAntecedentes" name="porAcusados" id="porAcusados" value="50" min="25" max="80" oninput="porAcusados_out.value = porAcusados.value">
-      <output name="porAcusados_out" id="porAcusados_out">50</output>
-    </div>
-    <div class="form-group">
-      <label for="example">Denuncias ante policia(izq)-fiscal(der)</label>
-      <input type="range" class="custom-range" [(ngModel)]="simu.porDenuncia" name="denPolFis" id="denPolFis" value="50" min="25" max="85" oninput="denPolFis_out.value = denPolFis.value">
-      <output name="denPolFis_out" id="denPolFis_out">50</output>
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>-->
+</div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
   </form>
 </div>
