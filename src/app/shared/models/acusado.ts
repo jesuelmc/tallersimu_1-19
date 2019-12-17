@@ -1,4 +1,5 @@
 export interface Acusado {
+    id;
     Cargos:String;
     Gravedad:boolean;        //alta=true baja=false
     Antecedentes:boolean;
