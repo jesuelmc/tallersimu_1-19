@@ -1,5 +1,5 @@
 export interface Simulacion {
-    $key?:string;
+    
     allanamiento:number;    
     amenaza:number; 
     asesinato:number; 

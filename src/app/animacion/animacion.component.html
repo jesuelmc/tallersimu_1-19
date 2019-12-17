@@ -1,10 +1,55 @@
-<div class="panel-header">
-  <div class="header text-center">
-    <h2 class="title" style="font-family: cursive;">TALLER DE SIMULACIÓN DE SISTEMAS</h2>
-  </div>
+<div style="height:80px"></div>
+<div class="container">
+  
+  <!-- <img src="../../assets/img/randy.png" alt="" class="animate"> -->
+  <!-- <img src="../../assets/img/police.png" alt="" width="50px" height="100px" style="position:relative; top:100px; left:-60px"> -->
+  <p></p>
 </div>
 <div class="container">
-  <img src="../../assets/img/randy.png" alt="" class="animate">
-  <img src="../../assets/img/police.png" alt="" width="50px" height="100px" style="position:relative; top:100px; left:-60px">
-  <div class="animate"></div>
+
 </div>
+
+<div *ngIf="simu" style="display:flex" >
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr class="text-center">
+          <th style="font-size: 15px;" scope="col">Allanamiento</th>
+          <th style="font-size: 15px;" scope="col">Amenaza</th>
+          <th style="font-size: 15px;" scope="col">Asesinato</th>
+          <th style="font-size: 15px;" scope="col">Conduccion Peligrosa</th>
+          <th style="font-size: 15px;" scope="col">Estafa</th>
+          <th style="font-size: 15px;" scope="col"># Jueces</th>
+          <th style="font-size: 15px;" scope="col"># Salas</th>
+          <th style="font-size: 15px;" scope="col">Otros</th>
+          <th style="font-size: 15px;" scope="col">% Antecedentes</th>
+          <th style="font-size: 15px;" scope="col">% Denuncias</th>
+          <th style="font-size: 15px;" scope="col">Robo</th>
+          <th style="font-size: 15px;" scope="col">Violaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center">
+          <td id="allanamiento">{{simu[4].allanamiento}}</td>
+          <td id="amenaza">{{simu[4].amenaza}}</td>
+          <td id="asesinato">{{simu[4].asesinato}}</td>
+          <td id="conduccionPel">{{simu[4].conduccionPel}}</td>
+          <td id="estafa">{{simu[4].estafa}}</td>
+          <td id="numJueces">{{simu[4].numJueces}}</td>
+          <td id="numSalas">{{simu[4].numSalas}}</td>
+          <td id="otros">{{simu[4].otros}}</td>
+          <td id="porAntecedentes">{{simu[4].porAntecedentes}}</td>
+          <td id="porDenuncia">{{simu[4].porDenuncia}}</td>
+          <td id="robo">{{simu[4].robo}}</td>
+          <td id="violaciones">{{simu[4].violaciones}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div>
+    <button (click)=prueba() class="btn">pritn</button>
+    <button (click)=pruebaF() class="btn">pritn</button>
+    <button (click)=pruebamover() class="btn">derecha</button>
+</div>
+<img src="../../assets/img/DiagramaC.PNG" alt="">
+<div class='container' id='div_img'>
+</div>  
