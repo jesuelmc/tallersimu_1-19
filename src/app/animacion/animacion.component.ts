@@ -28,6 +28,13 @@ export class AnimacionComponent implements OnInit {
       robo:0, 
       violaciones:0,
      };
+  acus={
+    id:'1',
+    Cargos:'robo',
+    Gravedad:true, 
+    Antecedentes:true,
+    Policica_fiscal:true,
+   }
   constructor(private calSimu: CalculoService, private simuService: SimuService) { }
   acusados:Acusado[];
   acusado:Acusado;
@@ -39,12 +46,14 @@ export class AnimacionComponent implements OnInit {
   }
   prueba() {
     this.crearPolicia('poli');
+    
   }
   pruebaF() {
     this.getAcusados();
+    this.eliminar('poli');
   }
   pruebamover() {
-    
+    this.iniSimu(this.acus);
     //this.moverPolicia('poli');
     //this.moverFiscal('poli');
     //this.moverInvestigar('poli');
@@ -81,6 +90,10 @@ export class AnimacionComponent implements OnInit {
     para.style.left = 140 + 'px';
     para.style.top = 900 + 'px';
     document.getElementById("div_img").appendChild(para);
+  }
+  eliminar(id:string){
+    var img=document.getElementById(id);
+    document.getElementById('div_img').removeChild(img);
   }
   mover(id_img: string, x: number, y: number, xFin: number, yFin: number) {
     var img = document.getElementById(id_img);
@@ -219,6 +232,90 @@ export class AnimacionComponent implements OnInit {
         this.moverPolicia(acu.id);
       }
     }, 1000);
+    setTimeout(() => {
+      this.moverInvestigar(acu.id);
+    }, 2000);
+    setTimeout(() => {
+      if(0.5<Math.random()){
+        this.moverObjecion(acu.id);
+        setTimeout(() => {
+          this.eliminar(acu.id);
+        }, 1000);
+      }
+      else{
+        this.moverFiscal(acu.id);
+        setTimeout(() => {
+          if(!(acu.Antecedentes&&acu.Gravedad)&&(Math.random()<0.5)){
+            this.moverSobresimiento(acu.id);
+            setTimeout(() => {
+              this.eliminar(acu.id);
+            }, 1000);
+          }
+          else if(!(acu.Antecedentes&&acu.Gravedad)){
+            this.moverSalAlt(acu.id);
+            setTimeout(() => {
+              var suerte=Math.random();
+              if(suerte<0.3){
+                this.moverSuspencion(acu.id);
+                setTimeout(() => {
+                  this.eliminar(acu.id);
+                }, 1000);
+              }
+              else if(suerte<0.6){
+                this.moverProAbre(acu.id);
+                setTimeout(() => {
+                  this.eliminar(acu.id);
+                }, 1000);
+              }
+              else{
+                this.moverConciliacion(acu.id);
+                setTimeout(() => {
+                  this.eliminar(acu.id);
+                }, 1000);
+              }
+            }, 1000);
+          }
+          else if(Math.random()<0.5){
+            this.moverComplementacion(acu.id);
+            setTimeout(() => {
+              this.eliminar(acu.id);
+            }, 1000);
+          }
+          else{
+            this.moverImputacion(acu.id);
+            setTimeout(() => {
+              this.moverJuicio(acu.id);
+            }, 1000);
+            setTimeout(() => {
+              this.moverSentencia(acu.id);
+            }, 2000);
+            setTimeout(() => {
+              if(Math.random()<0.5){
+                setTimeout(() => {
+                  this.moverApelacion(acu.id);
+                }, 1000);
+                if(Math.random()<0.5){
+                  setTimeout(() => {
+                    this.moverCasacion(acu.id);
+                  }, 1000);
+                }
+                else{
+                  setTimeout(() => {
+                    this.eliminar(acu.id);
+                  }, 1000);
+                }
+              }
+              else{
+                setTimeout(() => {
+                  this.eliminar(acu.id);
+                }, 1000);
+              }
+            }, 3000);
+          }
+        }, 1000);
+      }
+    }, 3000);
+    
   }
   getAcusados(){
     this.si.allanamiento=parseInt(document.getElementById('allanamiento').textContent);
