@@ -27,7 +27,7 @@ export class CalculoService {
     console.log(this.acusados);
   }
   calcularValor(valor:number){
-    var randon=Math.random()*100;
+    var randon=this.genCong()*100;
     if(randon<valor){
       return true;
     }
@@ -35,6 +35,12 @@ export class CalculoService {
       return false;
     }
   }
+  genCong(){
+    var res=0;
+    const value = (x, a, c, m) => (a * x + Number(c)) % m
+    return res;
+  }
+  
 
 
 }

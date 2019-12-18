@@ -45,16 +45,15 @@ export class AnimacionComponent implements OnInit {
     this.simu$.subscribe(simu => {
       this.simu = simu;
     });
-    console.log(this.resulSimu$[1].cargos);
   }
   prueba() {
     this.crearPolicia('poli');
     
   }
-  pruebaF() {
+  correrSimu() {
     this.getDatosSimu();
     this.getAcusados();
-    console.log(this.acusados);
+    //console.log(this.acusados);
     this.recIni(0);
     
   }
@@ -66,7 +65,7 @@ export class AnimacionComponent implements OnInit {
       }, 1000);
     }
   }
-  pruebamover() {
+  mosResul() {
     this.cargarResul();
     setTimeout(() => {
       this.resulSimu$ = this.simuService.getResulAcu();
