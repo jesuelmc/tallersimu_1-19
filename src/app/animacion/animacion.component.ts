@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Simulacion } from '../shared/models/simulacion';
 import { SimuService } from '../service/simu.service';
 import { Acusado } from '../shared/models/acusado';
+import { ResAcusado } from '../shared/models/resulAcusado';
 
 @Component({
   selector: 'app-animacion',
@@ -35,6 +36,7 @@ export class AnimacionComponent implements OnInit {
     Antecedentes:true,
     Policica_fiscal:true,
    }
+  resAcusados:ResAcusado[]=[];
   constructor(private calSimu: CalculoService, private simuService: SimuService) { }
   acusados:Acusado[]=[];
   ngOnInit() {
@@ -63,7 +65,8 @@ export class AnimacionComponent implements OnInit {
     }
   }
   pruebamover() {
-    this.iniSimu(this.acus);
+    console.log(this.resAcusados);
+    //this.iniSimu(this.acus);
     //this.moverPolicia('poli');
     //this.moverFiscal('poli');
     //this.moverInvestigar('poli');
@@ -231,12 +234,26 @@ export class AnimacionComponent implements OnInit {
   }
   iniSimu(acu:Acusado) {
     console.log(acu);
+    var resAcu={
+      cargos:acu.Cargos,
+      denuncia:1,
+      investigacion:0,
+      objecion:0,
+      complementacion:0,
+      salAlt:0,
+      rechazo:0,
+      conciliacion:0,
+      procAbre:0,
+      suspencion:0,
+      juicio:0,
+      apelacion:0,
+      casacion:0,
+    }
     if (acu.Policica_fiscal) {
       this.crearFiscal(acu.id);
     } else {
       this.crearPolicia(acu.id);
     }
-
     setTimeout(() => {
       if (acu.Policica_fiscal) {
         this.moverFis(acu.id);
@@ -244,52 +261,66 @@ export class AnimacionComponent implements OnInit {
         this.moverPolicia(acu.id);
       }
     }, 500);
+    resAcu.investigacion=Math.floor(Math.random() * 2);
     setTimeout(() => {
       this.moverInvestigar(acu.id);
     }, 1000);
     setTimeout(() => {
-      if(0.5<Math.random()){
+      if(0.8<Math.random()){
         this.moverObjecion(acu.id);
+        resAcu.objecion=Math.floor(Math.random() * 3);
         setTimeout(() => {
+          this.resAcusados.push(resAcu);
           this.eliminar(acu.id);
         }, 500);
       }
       else{
         this.moverFiscal(acu.id);
         setTimeout(() => {
-          if(!(acu.Antecedentes&&acu.Gravedad)&&(Math.random()<0.5)){
+          if(!(acu.Antecedentes&&acu.Gravedad)&&(Math.random()<0.35)){
+            resAcu.rechazo=Math.floor(Math.random() * 12);
             this.moverSobresimiento(acu.id);
             setTimeout(() => {
+              this.resAcusados.push(resAcu);
               this.eliminar(acu.id);
             }, 500);
           }
-          else if(!(acu.Antecedentes&&acu.Gravedad)){
+          else if(!(acu.Antecedentes&&acu.Gravedad)&&(Math.random()<0.20)){
+            resAcu.salAlt=Math.floor(Math.random() * 1);
             this.moverSalAlt(acu.id);
             setTimeout(() => {
               var suerte=Math.random();
               if(suerte<0.3){
+                resAcu.suspencion=Math.floor(Math.random() * 1);
                 this.moverSuspencion(acu.id);
                 setTimeout(() => {
+                  this.resAcusados.push(resAcu);
                   this.eliminar(acu.id);
                 }, 500);
               }
               else if(suerte<0.6){
+                resAcu.procAbre=Math.floor(Math.random() * 2);
                 this.moverProAbre(acu.id);
                 setTimeout(() => {
+                  this.resAcusados.push(resAcu);
                   this.eliminar(acu.id);
                 }, 500);
               }
               else{
+                resAcu.conciliacion=Math.floor(Math.random() * 4);
                 this.moverConciliacion(acu.id);
                 setTimeout(() => {
+                  this.resAcusados.push(resAcu);
                   this.eliminar(acu.id);
                 }, 500);
               }
             }, 500);
           }
-          else if(Math.random()<0.5){
+          else if(Math.random()<0.85){
+            resAcu.complementacion=Math.floor(Math.random() * 10);
             this.moverComplementacion(acu.id);
             setTimeout(() => {
+              this.resAcusados.push(resAcu);
               this.eliminar(acu.id);
             }, 500);
           }
@@ -299,26 +330,35 @@ export class AnimacionComponent implements OnInit {
               this.moverJuicio(acu.id);
             }, 500);
             setTimeout(() => {
+              resAcu.juicio=Math.floor(Math.random() * 70);
               this.moverSentencia(acu.id);
             }, 1000);
             setTimeout(() => {
               if(Math.random()<0.5){
                 setTimeout(() => {
+                  resAcu.apelacion=resAcu.juicio=25+Math.floor(Math.random() * 25);
                   this.moverApelacion(acu.id);
                 }, 500);
                 if(Math.random()<0.5){
                   setTimeout(() => {
+                    resAcu.casacion=resAcu.juicio=10+Math.floor(Math.random() * 12);
                     this.moverCasacion(acu.id);
+                    setTimeout(() => {
+                      this.resAcusados.push(resAcu);
+                      this.eliminar(acu.id);
+                    }, 500);
                   }, 500);
                 }
                 else{
                   setTimeout(() => {
+                    this.resAcusados.push(resAcu);
                     this.eliminar(acu.id);
                   }, 500);
                 }
               }
               else{
                 setTimeout(() => {
+                  this.resAcusados.push(resAcu);
                   this.eliminar(acu.id);
                 }, 500);
               }
