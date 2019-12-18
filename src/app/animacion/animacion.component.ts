@@ -36,8 +36,7 @@ export class AnimacionComponent implements OnInit {
     Policica_fiscal:true,
    }
   constructor(private calSimu: CalculoService, private simuService: SimuService) { }
-  acusados:Acusado[];
-  acusado:Acusado;
+  acusados:Acusado[]=[];
   ngOnInit() {
     this.simu$ = this.simuService.getSimulaciones();
     this.simu$.subscribe(simu => {
@@ -49,8 +48,19 @@ export class AnimacionComponent implements OnInit {
     
   }
   pruebaF() {
+    this.getDatosSimu();
     this.getAcusados();
-    this.eliminar('poli');
+    console.log(this.acusados);
+    this.recIni(0);
+    
+  }
+  recIni(pos:number){
+    if(pos<this.acusados.length){
+      setTimeout(() => {
+        this.iniSimu(this.acusados[pos]);
+        this.recIni(pos+1);
+      }, 1000);
+    }
   }
   pruebamover() {
     this.iniSimu(this.acus);
@@ -94,6 +104,7 @@ export class AnimacionComponent implements OnInit {
   eliminar(id:string){
     var img=document.getElementById(id);
     document.getElementById('div_img').removeChild(img);
+    console.log(id);
   }
   mover(id_img: string, x: number, y: number, xFin: number, yFin: number) {
     var img = document.getElementById(id_img);
@@ -106,11 +117,11 @@ export class AnimacionComponent implements OnInit {
       }
       else {
         if (x < xFin) {
-          posx++;
+          posx+=5;
           img.style.left = posx + 'px';
         }
         else {
-          posx--;
+          posx-=5;
           img.style.left = posx + 'px';
         }
       }
@@ -118,11 +129,11 @@ export class AnimacionComponent implements OnInit {
         clearInterval(id);
       } else {
         if (y < yFin) {
-          posy++;
+          posy+=5;
           img.style.top = posy + 'px';
         }
         else {
-          posy--;
+          posy-=5;
           img.style.top = posy + 'px';
         }
       }
@@ -137,11 +148,11 @@ export class AnimacionComponent implements OnInit {
         clearInterval(id);
       } else {
         if (x < xFin) {
-          posx++;
+          posx+=5;
           img.style.left = posx + 'px';
         }
         else {
-          posx--;
+          posx-=5;
           img.style.left = posx + 'px';
         }
       }
@@ -156,11 +167,11 @@ export class AnimacionComponent implements OnInit {
         clearInterval(id);
       } else {
         if (y < yFin) {
-          posy++;
+          posy+=5;
           img.style.top = posy + 'px';
         }
         else {
-          posy--;
+          posy-=5;
           img.style.top = posy + 'px';
         }
       }
@@ -219,6 +230,7 @@ export class AnimacionComponent implements OnInit {
     return Math.random() * 3;
   }
   iniSimu(acu:Acusado) {
+    console.log(acu);
     if (acu.Policica_fiscal) {
       this.crearFiscal(acu.id);
     } else {
@@ -231,16 +243,16 @@ export class AnimacionComponent implements OnInit {
       } else {
         this.moverPolicia(acu.id);
       }
-    }, 1000);
+    }, 500);
     setTimeout(() => {
       this.moverInvestigar(acu.id);
-    }, 2000);
+    }, 1000);
     setTimeout(() => {
       if(0.5<Math.random()){
         this.moverObjecion(acu.id);
         setTimeout(() => {
           this.eliminar(acu.id);
-        }, 1000);
+        }, 500);
       }
       else{
         this.moverFiscal(acu.id);
@@ -249,7 +261,7 @@ export class AnimacionComponent implements OnInit {
             this.moverSobresimiento(acu.id);
             setTimeout(() => {
               this.eliminar(acu.id);
-            }, 1000);
+            }, 500);
           }
           else if(!(acu.Antecedentes&&acu.Gravedad)){
             this.moverSalAlt(acu.id);
@@ -259,65 +271,65 @@ export class AnimacionComponent implements OnInit {
                 this.moverSuspencion(acu.id);
                 setTimeout(() => {
                   this.eliminar(acu.id);
-                }, 1000);
+                }, 500);
               }
               else if(suerte<0.6){
                 this.moverProAbre(acu.id);
                 setTimeout(() => {
                   this.eliminar(acu.id);
-                }, 1000);
+                }, 500);
               }
               else{
                 this.moverConciliacion(acu.id);
                 setTimeout(() => {
                   this.eliminar(acu.id);
-                }, 1000);
+                }, 500);
               }
-            }, 1000);
+            }, 500);
           }
           else if(Math.random()<0.5){
             this.moverComplementacion(acu.id);
             setTimeout(() => {
               this.eliminar(acu.id);
-            }, 1000);
+            }, 500);
           }
           else{
             this.moverImputacion(acu.id);
             setTimeout(() => {
               this.moverJuicio(acu.id);
-            }, 1000);
+            }, 500);
             setTimeout(() => {
               this.moverSentencia(acu.id);
-            }, 2000);
+            }, 1000);
             setTimeout(() => {
               if(Math.random()<0.5){
                 setTimeout(() => {
                   this.moverApelacion(acu.id);
-                }, 1000);
+                }, 500);
                 if(Math.random()<0.5){
                   setTimeout(() => {
                     this.moverCasacion(acu.id);
-                  }, 1000);
+                  }, 500);
                 }
                 else{
                   setTimeout(() => {
                     this.eliminar(acu.id);
-                  }, 1000);
+                  }, 500);
                 }
               }
               else{
                 setTimeout(() => {
                   this.eliminar(acu.id);
-                }, 1000);
+                }, 500);
               }
-            }, 3000);
+            }, 1500);
           }
-        }, 1000);
+        }, 500);
       }
-    }, 3000);
+    }, 1500);
     
   }
-  getAcusados(){
+  getDatosSimu(){
     this.si.allanamiento=parseInt(document.getElementById('allanamiento').textContent);
     this.si.amenaza=parseInt(document.getElementById('amenaza').textContent);
     this.si.asesinato=parseInt(document.getElementById('asesinato').textContent);
@@ -330,7 +342,97 @@ export class AnimacionComponent implements OnInit {
     this.si.porAntecedentes=parseInt(document.getElementById('porAntecedentes').textContent);
     this.si.robo=parseInt(document.getElementById('robo').textContent);
     this.si.violaciones=parseInt(document.getElementById('violaciones').textContent);
-    console.log(this.si);
+  }
+  getAcusados(){
+    var Id=0;
+     for(var i=0;i<this.si.allanamiento;i++){
+       var acus={
+       id:Id+"",
+       Cargos:'allanamiento',
+       Gravedad:(Math.random()<0.5),
+       Antecedentes:(this.si.porAntecedentes<Math.random()*100),
+       Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+       }
+       this.acusados.push(acus);
+       Id++;
+     }
+     for(var i=0;i<this.si.amenaza;i++){
+      var acus={
+        id:Id+"",
+        Cargos:'amenaza',
+        Gravedad:false,
+        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
+        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        }
+      this.acusados.push(acus);
+      Id++;
+    }
+    for(var i=0;i<this.si.asesinato;i++){
+      var acus={
+        id:Id+"",
+        Cargos:'asesinato',
+        Gravedad:true,
+        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
+        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        }
+      this.acusados.push(acus);
+      Id++;
+    }
+    for(var i=0;i<this.si.conduccionPel;i++){
+      var acus={
+        id:Id+"",
+        Cargos:'conduccionPel',
+        Gravedad:true,
+        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
+        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        }
+      this.acusados.push(acus);
+      Id++;
+    }
+    for(var i=0;i<this.si.estafa;i++){
+      var acus={
+        id:Id+"",
+        Cargos:'estafa',
+        Gravedad:(Math.random()<0.5),
+        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
+        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        }
+      this.acusados.push(acus);
+      Id++;
+    }
+    for(var i=0;i<this.si.otros;i++){
+      var acus={
+        id:Id+"",
+        Cargos:'otros',
+        Gravedad:false,
+        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
+        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        }
+      this.acusados.push(acus);
+      Id++;
+    }
+    for(var i=0;i<this.si.robo;i++){
+      var acus={
+        id:Id+"",
+        Cargos:'robo',
+        Gravedad:(Math.random()<0.5),
+        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
+        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        }
+      this.acusados.push(acus);
+      Id++;
+    }
+    for(var i=0;i<this.si.violaciones;i++){
+      var acus={
+        id:Id+"",
+        Cargos:'violaciones',
+        Gravedad:true,
+        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
+        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        }
+      this.acusados.push(acus);
+      Id++;
+    }
   }
 }
 
