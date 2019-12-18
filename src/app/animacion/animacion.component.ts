@@ -65,7 +65,8 @@ export class AnimacionComponent implements OnInit {
     }
   }
   pruebamover() {
-    console.log(this.resAcusados);
+    this.cargarResul();
+    //console.log(this.resAcusados);
     //this.iniSimu(this.acus);
     //this.moverPolicia('poli');
     //this.moverFiscal('poli');
@@ -83,6 +84,13 @@ export class AnimacionComponent implements OnInit {
     //this.moverSentencia('poli');
     //this.moverApelacion('poli');
     //this.moverCasacion('poli');
+  }
+  cargarResul(){
+    var i=0;
+      while(i<this.resAcusados.length){
+      this.simuService.updateResul(this.resAcusados[i]);
+      i++;
+    }
   }
   crearPolicia(id: string) {
     var para = document.createElement("img");
