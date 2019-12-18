@@ -14,6 +14,7 @@ import { ResAcusado } from '../shared/models/resulAcusado';
 
 export class AnimacionComponent implements OnInit {
   simu$: Observable<Simulacion[]>;
+  resulSimu$:Observable<ResAcusado[]>;
   simu: Simulacion[];
   si = {
       allanamiento:0,    
@@ -44,6 +45,7 @@ export class AnimacionComponent implements OnInit {
     this.simu$.subscribe(simu => {
       this.simu = simu;
     });
+    console.log(this.resulSimu$[1].cargos);
   }
   prueba() {
     this.crearPolicia('poli');
@@ -66,6 +68,9 @@ export class AnimacionComponent implements OnInit {
   }
   pruebamover() {
     this.cargarResul();
+    setTimeout(() => {
+      this.resulSimu$ = this.simuService.getResulAcu();
+    }, 3000);
     //console.log(this.resAcusados);
     //this.iniSimu(this.acus);
     //this.moverPolicia('poli');

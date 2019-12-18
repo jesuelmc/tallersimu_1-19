@@ -54,7 +54,7 @@
 <div class='container' id='div_img'>
 </div>  
 
-<div *ngIf="simu" style="display:flex" >
+<div>
   <table class="table table-bordered">
     <thead class="thead-dark">
       <tr class="text-center">
@@ -73,20 +73,21 @@
         <th style="font-size: 13px;" scope="col">Casación</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let resulSimu of resulSimu$ | async">
       <tr class="text-center">
-        <td id="allanamiento">{{simu[4].allanamiento}}</td>
-        <td id="amenaza">{{simu[4].amenaza}}</td>
-        <td id="asesinato">{{simu[4].asesinato}}</td>
-        <td id="conduccionPel">{{simu[4].conduccionPel}}</td>
-        <td id="estafa">{{simu[4].estafa}}</td>
-        <td id="numJueces">{{simu[4].numJueces}}</td>
-        <td id="numSalas">{{simu[4].numSalas}}</td>
-        <td id="otros">{{simu[4].otros}}</td>
-        <td id="porAntecedentes">{{simu[4].porAntecedentes}}</td>
-        <td id="porDenuncia">{{simu[4].porDenuncia}}</td>
-        <td id="robo">{{simu[4].robo}}</td>
-        <td id="violaciones">{{simu[4].violaciones}}</td>
+        <td>{{resulSimu.cargos}}</td>
+        <td>{{resulSimu.denuncia}}</td>
+        <td>{{resulSimu.investigacion}}</td>
+        <td>{{resulSimu.objecion}}</td>
+        <td>{{resulSimu.complementacion}}</td>
+        <td>{{resulSimu.salAlt}}</td>
+        <td>{{resulSimu.rechazo}}</td>
+        <td>{{resulSimu.conciliacion}}</td>
+        <td>{{resulSimu.procAbre}}</td>
+        <td>{{resulSimu.suspencion}}</td>
+        <td>{{resulSimu.juicio}}</td>
+        <td>{{resulSimu.apelacion}}</td>
+        <td>{{resulSimu.casacion}}</td>
       </tr>
     </tbody>
   </table>

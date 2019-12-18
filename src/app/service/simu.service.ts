@@ -24,6 +24,9 @@ export class SimuService {
     updateResul(resul:ResAcusado){
       this.resulAcusados.add(resul);
     }
+    getResulAcu(){
+      return this.db.collection<ResAcusado>('resulAcu').valueChanges();
+    }
     
    
 }
