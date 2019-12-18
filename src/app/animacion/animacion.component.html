@@ -53,3 +53,41 @@
 <img src="../../assets/img/DiagramaC.PNG" alt="">
 <div class='container' id='div_img'>
 </div>  
+
+<div *ngIf="simu" style="display:flex" >
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr class="text-center">
+        <th style="font-size: 13px;" scope="col">Cargos</th>
+        <th style="font-size: 13px;" scope="col">Denuncia</th>
+        <th style="font-size: 13px;" scope="col">Investigación</th>
+        <th style="font-size: 13px;" scope="col">Objeción</th>
+        <th style="font-size: 13px;" scope="col">Complementación</th>
+        <th style="font-size: 13px;" scope="col">Salidas alternativas</th>
+        <th style="font-size: 13px;" scope="col">Rechazo</th>
+        <th style="font-size: 13px;" scope="col">Conciliación</th>
+        <th style="font-size: 13px;" scope="col">Proceso abreviado</th>
+        <th style="font-size: 13px;" scope="col">Suspención</th>
+        <th style="font-size: 13px;" scope="col">Juicio</th>
+        <th style="font-size: 13px;" scope="col">Apelación</th>
+        <th style="font-size: 13px;" scope="col">Casación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center">
+        <td id="allanamiento">{{simu[4].allanamiento}}</td>
+        <td id="amenaza">{{simu[4].amenaza}}</td>
+        <td id="asesinato">{{simu[4].asesinato}}</td>
+        <td id="conduccionPel">{{simu[4].conduccionPel}}</td>
+        <td id="estafa">{{simu[4].estafa}}</td>
+        <td id="numJueces">{{simu[4].numJueces}}</td>
+        <td id="numSalas">{{simu[4].numSalas}}</td>
+        <td id="otros">{{simu[4].otros}}</td>
+        <td id="porAntecedentes">{{simu[4].porAntecedentes}}</td>
+        <td id="porDenuncia">{{simu[4].porDenuncia}}</td>
+        <td id="robo">{{simu[4].robo}}</td>
+        <td id="violaciones">{{simu[4].violaciones}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

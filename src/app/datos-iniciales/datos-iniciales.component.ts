@@ -49,15 +49,15 @@ export class DatosInicialesComponent implements OnInit {
   }
   updateDatos(){
     if(this.allanamiento){
-      this.simu.allanamiento=Math.floor(Math.random() * 15);
+      this.simu.allanamiento=Math.floor(Math.random() * 13);
       this.simu.otros=this.simu.otros-10;
     }
     if(this.amenaza){
-      this.simu.amenaza=Math.floor(Math.random() * 15);
+      this.simu.amenaza=Math.floor(Math.random() * 17);
       this.simu.otros=this.simu.otros-10;
     }
     if(this.asesinato){
-      this.simu.asesinato=Math.floor(Math.random() * 15);
+      this.simu.asesinato=Math.floor(Math.random() * 11);
       this.simu.otros=this.simu.otros-10;
     }
     if(this.conduccionPel){
@@ -65,15 +65,15 @@ export class DatosInicialesComponent implements OnInit {
       this.simu.otros=this.simu.otros-10;
     }
     if(this.estafa){
-      this.simu.estafa=Math.floor(Math.random() * 15);
+      this.simu.estafa=Math.floor(Math.random() * 10);
       this.simu.otros=this.simu.otros-10;
     }
     if(this.robo){
-      this.simu.robo=Math.floor(Math.random() * 15);
+      this.simu.robo=Math.floor(Math.random() * 19);
       this.simu.otros=this.simu.otros-10;
     }
     if(this.violaciones){
-      this.simu.violaciones=Math.floor(Math.random() * 15);
+      this.simu.violaciones=Math.floor(Math.random() * 16);
       this.simu.otros=this.simu.otros-10;
     }
   }
