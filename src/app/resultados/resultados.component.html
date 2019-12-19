@@ -4,7 +4,8 @@
   </div>
 </div>
 <div class="container">
-  <div style="display: block;" class="bg-light">
+
+  <div #screen id="table" style="display: block;">
     <canvas baseChart 
       [datasets]="barChartData"
       [labels]="barChartLabels"
@@ -15,6 +16,7 @@
     </canvas>
   </div>
   <button class="btn btn-secondary" (click)="randomize()">Update</button>
+  <div class="btn btn-primary" (click)="downloadImage()">Descargar</div>
 </div>
 <div>
   <table class="table"style="font-size:10">
@@ -67,3 +69,8 @@
   </table>
 </div>
 <button (click)="probar()">prueba</button>
+<button (click)="probar()">prueba</button>
+<div id="download">
+  <img #canvas style="visibility: hidden;">
+  <a #downloadLink></a>
+</div>

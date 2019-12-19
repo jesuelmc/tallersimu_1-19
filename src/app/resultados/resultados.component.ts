@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chart.js';
 import { SimuService } from '../service/simu.service';
 import { ResAcusado } from '../shared/models/resulAcusado';
 import { Observable } from 'rxjs';
+import * as html2canvas from 'html2canvas';
 import { ResulSimu } from '../shared/models/resulSimu';
 import { ResTotal } from '../shared/models/resTotal';
 
@@ -14,8 +15,13 @@ import { ResTotal } from '../shared/models/resTotal';
   styleUrls: ['./resultados.component.scss']
 })
 export class ResultadosComponent implements OnInit {
+
+  @ViewChild('screen') screen: ElementRef;
+  @ViewChild('canvas') canvas: ElementRef;
+  @ViewChild('downloadLink') downloadLink: ElementRef;
   resSimu:ResulSimu[]=[];
   resTotales:ResTotal[]=[];
+
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -57,6 +63,14 @@ export class ResultadosComponent implements OnInit {
       console.log(this.resTotales);
       this.cargarDatos();
     }, 3000);
+  }
+  downloadImage(){
+    html2canvas(this.screen.nativeElement).then(canvas => {
+      this.canvas.nativeElement.src = canvas.toDataURL();
+      this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
+      this.downloadLink.nativeElement.download = 'marble-diagram.png';
+      this.downloadLink.nativeElement.click();
+    });
   }
   probar(){
     console.log(this.resulAcu);
