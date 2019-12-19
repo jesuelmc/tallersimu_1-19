@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="container">
-  <div style="display: block;">
+  <div style="display: block;" class="bg-light">
     <canvas baseChart 
       [datasets]="barChartData"
       [labels]="barChartLabels"
@@ -15,5 +15,55 @@
     </canvas>
   </div>
   <button class="btn btn-secondary" (click)="randomize()">Update</button>
+</div>
+<div>
+  <table class="table"style="font-size:10">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Cargo</th>
+        <th scope="col">Denuncias</th>
+        <th scope="col">Investigacion</th>
+        <th scope="col">Objecion</th>
+        <th scope="col">Complementacion</th>
+        <th scope="col">Salidas alt</th>
+        <th scope="col">Rechazo</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let res of resSimu">
+      <tr>
+        <td>{{res.cargos}}</td>
+        <td>{{res.denuncia}}</td>
+        <td>{{res.investigacion}}</td>
+        <td>{{res.objecion}}</td>
+        <td>{{res.complementacion}}</td>
+        <td>{{res.salAlt}}</td>
+        <td>{{res.rechazo}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Cargo</th>
+        <th scope="col">Conciliacion</th>
+        <th scope="col">Proc. abreviado</th>
+        <th scope="col">Suspencion</th>
+        <th scope="col">Juicio</th>
+        <th scope="col">Apelacion</th>
+        <th scope="col">Casacion</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let res of resSimu">
+      <tr>
+        <td>{{res.cargos}}</td>
+        <td>{{res.conciliacion}}</td>
+        <td>{{res.procAbre}}</td>
+        <td>{{res.suspencion}}</td>
+        <td>{{res.juicio}}</td>
+        <td>{{res.apelacion}}</td>
+        <td>{{res.casacion}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <button (click)="probar()">prueba</button>
