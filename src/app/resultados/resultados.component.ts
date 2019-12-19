@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chart.js';
 import { SimuService } from '../service/simu.service';
 import { ResAcusado } from '../shared/models/resulAcusado';
 import { Observable } from 'rxjs';
+import * as html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-resultados',
@@ -12,6 +13,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./resultados.component.scss']
 })
 export class ResultadosComponent implements OnInit {
+
+  @ViewChild('screen') screen: ElementRef;
+  @ViewChild('canvas') canvas: ElementRef;
+  @ViewChild('downloadLink') downloadLink: ElementRef;
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -42,6 +47,14 @@ export class ResultadosComponent implements OnInit {
     this.resulAcu$=this.simuService.getResulAcu();
     this.resulAcu$.subscribe(acu => {
       this.resulAcu = acu;
+    });
+  }
+  downloadImage(){
+    html2canvas(this.screen.nativeElement).then(canvas => {
+      this.canvas.nativeElement.src = canvas.toDataURL();
+      this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
+      this.downloadLink.nativeElement.download = 'marble-diagram.png';
+      this.downloadLink.nativeElement.click();
     });
   }
   probar(){
