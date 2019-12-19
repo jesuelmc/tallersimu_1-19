@@ -3,13 +3,10 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { IconsComponent } from '../../icons/icons.component';
-import { NotificationsComponent } from '../../notifications/notifications.component';
 import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
-import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { HomeComponent } from '../../home/home.component';
 import { SimulacionComponent } from '../../simulacion/simulacion.component';
 import { GraficasComponent } from '../../graficas/graficas.component';
@@ -28,10 +25,7 @@ import { InstruccionesComponent } from '../../instrucciones/instrucciones.compon
     ToastrModule.forRoot()
   ],
   declarations: [
-    UserProfileComponent,
-    UpgradeComponent,
     IconsComponent,
-    NotificationsComponent,
     HomeComponent,
     SimulacionComponent,
     GraficasComponent,
