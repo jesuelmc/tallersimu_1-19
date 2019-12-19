@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/fires
 import { Observable } from 'rxjs';
 import { Simulacion } from '../shared/models/simulacion';
 import { ResAcusado } from '../shared/models/resulAcusado';
+import { ResulSimu } from '../shared/models/resulSimu';
 
 
 @Injectable({
@@ -11,6 +12,7 @@ import { ResAcusado } from '../shared/models/resulAcusado';
 export class SimuService {
   simuCollection: AngularFirestoreCollection<Simulacion>;
   resulAcusados: AngularFirestoreCollection<ResAcusado>;
+  resulSimu: AngularFirestoreCollection<ResulSimu>
   constructor(private db: AngularFirestore ) {
     this.simuCollection = db.collection<Simulacion>('simulacion');
     this.resulAcusados= db.collection<ResAcusado>('resulAcu');
@@ -21,11 +23,17 @@ export class SimuService {
     updateSimu(simu:Simulacion){
       this.simuCollection.doc("simulacion").set(simu);
     }
-    updateResul(resul:ResAcusado){
-      this.resulAcusados.add(resul);
+    updateResul(resul:ResAcusado,id:number){
+      this.resulAcusados.doc(id+"").set(resul);
     }
     getResulAcu(){
       return this.db.collection<ResAcusado>('resulAcu').valueChanges();
+    }
+    updateResulSimu(resul:ResulSimu,cargo:string){
+      this.resulAcusados.doc(cargo).set(resul);
+    }
+    getResulSimu(){
+      return this.db.collection<ResulSimu>('resulSimu').valueChanges();
     }
     
    

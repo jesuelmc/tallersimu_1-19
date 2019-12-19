@@ -5,6 +5,7 @@ import { Simulacion } from '../shared/models/simulacion';
 import { SimuService } from '../service/simu.service';
 import { Acusado } from '../shared/models/acusado';
 import { ResAcusado } from '../shared/models/resulAcusado';
+import { ResulSimu } from '../shared/models/resulSimu';
 
 @Component({
   selector: 'app-animacion',
@@ -16,6 +17,7 @@ export class AnimacionComponent implements OnInit {
   simu$: Observable<Simulacion[]>;
   resulSimu$:Observable<ResAcusado[]>;
   simu: Simulacion[];
+  resSimu$:Observable<ResAcusado[]>;
   si = {
       allanamiento:0,    
       amenaza:0, 
@@ -38,6 +40,7 @@ export class AnimacionComponent implements OnInit {
     Policica_fiscal:true,
    }
   resAcusados:ResAcusado[]=[];
+  resAcu:ResAcusado[]=[];
   constructor(private calSimu: CalculoService, private simuService: SimuService) { }
   acusados:Acusado[]=[];
   ngOnInit() {
@@ -45,9 +48,13 @@ export class AnimacionComponent implements OnInit {
     this.simu$.subscribe(simu => {
       this.simu = simu;
     });
+    this.resSimu$ = this.simuService.getResulAcu();
+    this.resSimu$.subscribe(acu => {
+      this.resAcu = acu;
+    });
   }
   prueba() {
-    this.crearPolicia('poli');
+    console.log(this.resAcu);
     
   }
   correrSimu() {
@@ -92,7 +99,7 @@ export class AnimacionComponent implements OnInit {
   cargarResul(){
     var i=0;
       while(i<this.resAcusados.length){
-      this.simuService.updateResul(this.resAcusados[i]);
+      this.simuService.updateResul(this.resAcusados[i],i);
       i++;
     }
   }

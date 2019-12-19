@@ -27,7 +27,7 @@
           <th style="font-size: 15px;" scope="col">Violaciones</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="lol">
         <tr class="text-center">
           <td id="allanamiento">{{simu[4].allanamiento}}</td>
           <td id="amenaza">{{simu[4].amenaza}}</td>
@@ -49,6 +49,7 @@
     
     <button (click)=correrSimu() class="btn">Empezar simulacion</button>
     <button (click)=mosResul() class="btn">Mostrar resultados</button>
+    <button (click)=prueba() class="btn">Empezar simulacion</button>
 </div>
 <img src="../../assets/img/DiagramaC.PNG" alt="">
 <div class='container' id='div_img'>

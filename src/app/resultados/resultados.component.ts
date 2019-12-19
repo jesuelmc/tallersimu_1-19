@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chart.js';
+import { SimuService } from '../service/simu.service';
+import { ResAcusado } from '../shared/models/resulAcusado';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-resultados',
@@ -32,9 +35,17 @@ export class ResultadosComponent implements OnInit {
     { data: [128, 78], label: 'Actual' }
   ];
 
-  constructor() { }
-
+  constructor(private simuService:SimuService) { }
+  resulAcu$:Observable<ResAcusado[]>;
+  resulAcu:ResAcusado[]=[];
   ngOnInit() {
+    this.resulAcu$=this.simuService.getResulAcu();
+    this.resulAcu$.subscribe(acu => {
+      this.resulAcu = acu;
+    });
+  }
+  probar(){
+    console.log(this.resulAcu);
   }
 
   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
