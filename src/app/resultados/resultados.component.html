@@ -3,9 +3,10 @@
     <h2 class="title" style="font-family: cursive;">TALLER DE SIMULACIÓN DE SISTEMAS</h2>
   </div>
 </div>
+<div #screen id="table">
 <div class="container">
 
-  <div #screen id="table" style="display: block;">
+  <div  style="display: block;">
     <canvas baseChart 
       [datasets]="barChartData"
       [labels]="barChartLabels"
@@ -15,19 +16,19 @@
       [chartType]="barChartType">
     </canvas>
   </div>
-  <button class="btn btn-secondary" (click)="randomize()">Update</button>
-  <div class="btn btn-primary" (click)="downloadImage()">Descargar</div>
+  <hr class="linea">
 </div>
-<div>
+<div class="text-center">
+    <h2>PROMEDIO DE DIAS POR FASES</h2>
   <table class="table"style="font-size:10">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Cargo</th>
+        <th scope="col">Cargos</th>
         <th scope="col">Denuncias</th>
-        <th scope="col">Investigacion</th>
-        <th scope="col">Objecion</th>
-        <th scope="col">Complementacion</th>
-        <th scope="col">Salidas alt</th>
+        <th scope="col">Investigación</th>
+        <th scope="col">Objeción</th>
+        <th scope="col">Complementación</th>
+        <th scope="col">Salidas Alternativas</th>
         <th scope="col">Rechazo</th>
       </tr>
     </thead>
@@ -46,13 +47,13 @@
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Cargo</th>
-        <th scope="col">Conciliacion</th>
+        <th scope="col">Cargos</th>
+        <th scope="col">Conciliación</th>
         <th scope="col">Proc. abreviado</th>
-        <th scope="col">Suspencion</th>
+        <th scope="col">Suspención</th>
         <th scope="col">Juicio</th>
-        <th scope="col">Apelacion</th>
-        <th scope="col">Casacion</th>
+        <th scope="col">Apelación</th>
+        <th scope="col">Casación</th>
       </tr>
     </thead>
     <tbody *ngFor="let res of resSimu">
@@ -68,9 +69,9 @@
     </tbody>
   </table>
 </div>
-<button (click)="probar()">prueba</button>
-<button (click)="probar()">prueba</button>
+</div>
+<div class="text-center"><button class="btn btn-primary" width="100%" (click)="downloadImage()">Descargar </button>  </div>
 <div id="download">
-  <img #canvas style="visibility: hidden;">
+  <img #canvas style="visibility: hidden;height:50px">
   <a #downloadLink></a>
 </div>

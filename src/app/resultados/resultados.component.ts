@@ -33,7 +33,7 @@ export class ResultadosComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = ['tiempo promedio'];
+  public barChartLabels: Label[] = ['Tiempo promedio (DIA)'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
