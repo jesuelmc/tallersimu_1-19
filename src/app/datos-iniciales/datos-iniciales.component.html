@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <br><br>
+  <form (ngSubmit)="guardarSimu()">
+
+    <div class="container form-group row">
+      <label for="example" class="col-form-label m-3">Seleccione un número de salas disponibles</label>
+      <select [(ngModel)]="simu.numSalas" name="cantSalas" id="cantSalas"
+        class="form-control bg-light text-dark col-1 m-3" placeholder="1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+      </select>
+    </div>
+    <div class="container form-group row">
+      <label for="customRange2" class="col-form-label m-3">Seleccionar un número de jueces técnicos</label>
+      <input type="range" class="custom-range col-2 m-4" [(ngModel)]="simu.numJueces" name="jueces_tecnicos"
+        id="jueces_tecnicos" value="10" min="5" max="15" oninput="jueces_tecnicos_out.value = jueces_tecnicos.value">
+      <output name="jueces_tecnicos_out" id="jueces_tecnicos_out" class="mt-4">10</output>
+    </div>
+    <div class="form-row">
+      <label for="example" class="col-form-label m-3">Selecione los tipos de delitos:</label>
+      <div class="form-group m-4">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="violaciones" name="violaciones"
+            id="violaciones">
+          <label class="custom-control-label" for="violaciones">violacion</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="asesinato" name="asesinato" id="asesinato">
+          <label class="custom-control-label" for="asesinato">asesinato</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="robo" name="robo" id="robo">
+          <label class="custom-control-label" for="robo">robo</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="allanamiento" name="allanamiento"
+            id="allanamiento">
+          <label class="custom-control-label" for="allanamiento">allanamiento</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="amenaza" name="amenaza" id="amenaza">
+          <label class="custom-control-label" for="amenazas">amenaza</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="conduccionPel" name="conduccionPel"
+            id="conduccionPel">
+          <label class="custom-control-label" for="conduccionPel">conducción peligrosa</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="estafa" name="estafa" id="estafa">
+          <label class="custom-control-label" for="estafa">estafa</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="example" class="col-form-label m-3">Porcentaje de acusados con antecedentes</label>
+      <input type="range" class="custom-range col-2 m-4" [(ngModel)]="simu.porAntecedentes" name="porAcusados" id="porAcusados"
+        value="50" min="25" max="80" oninput="porAcusados_out.value = porAcusados.value">
+      <output name="porAcusados_out" id="porAcusados_out" class="mt-4">50</output><label class="mt-4">%</label>
+    </div>
+
+    <div class="form-row">
+      <label for="example" class="m-4">Denuncias ante la policia(Izq) o el fiscalía(Der): </label>
+      <input type="range" class="custom-range col-2 m-4" [(ngModel)]="simu.porDenuncia" name="denPolFis" id="denPolFis" value="50"
+        min="25" max="85" oninput="denPolFis_out.value = denPolFis.value">
+      <output name="denPolFis_out" id="denPolFis_out" class="mt-4">50</output><label class="mt-4">%</label>
+      
+</div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
+  </form>
+</div>
