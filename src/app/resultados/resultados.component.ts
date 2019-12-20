@@ -163,18 +163,18 @@ export class ResultadosComponent implements OnInit {
       i++;
     }
     if(cant>0){
-        resAcu.denuncia=resAcu.denuncia/cant;
-        resAcu.investigacion=resAcu.investigacion/cant;
-        resAcu.objecion=resAcu.objecion/cant;
-        resAcu.complementacion=resAcu.complementacion/cant;
-        resAcu.salAlt=resAcu.salAlt/cant;
-        resAcu.rechazo=resAcu.rechazo/cant;
-        resAcu.conciliacion=resAcu.conciliacion/cant;
-        resAcu.procAbre=resAcu.procAbre/cant;
-        resAcu.suspencion=resAcu.suspencion/cant;
-        resAcu.juicio=resAcu.juicio/cant;
-        resAcu.apelacion=resAcu.apelacion/cant;
-        resAcu.casacion=resAcu.casacion/cant; 
+        resAcu.denuncia=parseFloat((resAcu.denuncia/cant).toFixed(2));
+        resAcu.investigacion=parseFloat((resAcu.investigacion/cant).toFixed(2));
+        resAcu.objecion=parseFloat((resAcu.objecion/cant).toFixed(2));
+        resAcu.complementacion=parseFloat((resAcu.complementacion/cant).toFixed(2));
+        resAcu.salAlt=parseFloat((resAcu.salAlt/cant).toFixed(2));
+        resAcu.rechazo=parseFloat((resAcu.rechazo/cant).toFixed(2));
+        resAcu.conciliacion=parseFloat((resAcu.conciliacion/cant).toFixed(2));
+        resAcu.procAbre=parseFloat((resAcu.procAbre/cant).toFixed(2));
+        resAcu.suspencion=parseFloat((resAcu.suspencion/cant).toFixed(2));
+        resAcu.juicio=parseFloat((resAcu.juicio/cant).toFixed(2));
+        resAcu.apelacion=parseFloat((resAcu.apelacion/cant).toFixed(2));
+        resAcu.casacion=parseFloat((resAcu.casacion/cant).toFixed(2));
       this.resSimu.push(resAcu);
       var resTot={
         cargo:cargo,

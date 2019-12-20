@@ -32,13 +32,6 @@ export class AnimacionComponent implements OnInit {
       robo:0, 
       violaciones:0,
      };
-  acus={
-    id:'1',
-    Cargos:'robo',
-    Gravedad:true, 
-    Antecedentes:true,
-    Policica_fiscal:true,
-   }
   resAcusados:ResAcusado[]=[];
   resAcu:ResAcusado[]=[];
   constructor(private calSimu: CalculoService, private simuService: SimuService) { }
@@ -54,13 +47,11 @@ export class AnimacionComponent implements OnInit {
     });
   }
   prueba() {
-    console.log(this.resAcu);
-    
+    console.log(this.calSimu.getAle());
   }
   correrSimu() {
     this.getDatosSimu();
     this.getAcusados();
-    //console.log(this.acusados);
     this.recIni(0);
     
   }
@@ -77,24 +68,6 @@ export class AnimacionComponent implements OnInit {
     setTimeout(() => {
       this.resulSimu$ = this.simuService.getResulAcu();
     }, 3000);
-    //console.log(this.resAcusados);
-    //this.iniSimu(this.acus);
-    //this.moverPolicia('poli');
-    //this.moverFiscal('poli');
-    //this.moverInvestigar('poli');
-    //this.moverObjecion('poli');
-    //this.moverFiscal('poli');
-    //this.moverComplementacion('poli');
-    //this.moverImputacion('poli');
-    //this.moverSobresimiento('poli');
-    //this.moverSalAlt('poli');
-    //this.moverSuspencion('poli');
-    //this.moverProAbre('poli');
-    //this.moverConciliacion('poli');
-    //this.moverJuicio('poli');
-    //this.moverSentencia('poli');
-    //this.moverApelacion('poli');
-    //this.moverCasacion('poli');
   }
   cargarResul(){
     var i=0;
@@ -249,13 +222,13 @@ export class AnimacionComponent implements OnInit {
   }
 
   random() {
-    return Math.random() * 3;
+    return this.calSimu.getAle() * 3;
   }
   iniSimu(acu:Acusado) {
     console.log(acu);
     var resAcu={
       cargos:acu.Cargos,
-      denuncia:1,
+      denuncia:Math.floor(this.calSimu.getAle() * 2),
       investigacion:0,
       objecion:0,
       complementacion:0,
@@ -280,14 +253,14 @@ export class AnimacionComponent implements OnInit {
         this.moverPolicia(acu.id);
       }
     }, 500);
-    resAcu.investigacion=Math.floor(Math.random() * 2);
+    resAcu.investigacion=1+Math.floor(this.calSimu.getAle() * 2);
     setTimeout(() => {
       this.moverInvestigar(acu.id);
     }, 1000);
     setTimeout(() => {
-      if(0.8<Math.random()){
+      if(0.85<this.calSimu.getAle()){
         this.moverObjecion(acu.id);
-        resAcu.objecion=Math.floor(Math.random() * 3);
+        resAcu.objecion=3+Math.floor(this.calSimu.getAle() * 4);
         setTimeout(() => {
           this.resAcusados.push(resAcu);
           this.eliminar(acu.id);
@@ -296,21 +269,21 @@ export class AnimacionComponent implements OnInit {
       else{
         this.moverFiscal(acu.id);
         setTimeout(() => {
-          if(!(acu.Antecedentes&&acu.Gravedad)&&(Math.random()<0.35)){
-            resAcu.rechazo=Math.floor(Math.random() * 12);
+          if(!(acu.Antecedentes&&acu.Gravedad)&&(this.calSimu.getAle()<0.5)){
+            resAcu.rechazo=15+Math.floor(this.calSimu.getAle() * 12);
             this.moverSobresimiento(acu.id);
             setTimeout(() => {
               this.resAcusados.push(resAcu);
               this.eliminar(acu.id);
             }, 500);
           }
-          else if(!(acu.Antecedentes&&acu.Gravedad)&&(Math.random()<0.20)){
-            resAcu.salAlt=Math.floor(Math.random() * 1);
+          else if(!(acu.Antecedentes&&acu.Gravedad)&&(this.calSimu.getAle()<0.40)){
+            resAcu.salAlt=5+Math.floor(this.calSimu.getAle() * 6);
             this.moverSalAlt(acu.id);
             setTimeout(() => {
-              var suerte=Math.random();
+              var suerte=this.calSimu.getAle();
               if(suerte<0.3){
-                resAcu.suspencion=Math.floor(Math.random() * 1);
+                resAcu.suspencion=360+Math.floor(this.calSimu.getAle() *700);
                 this.moverSuspencion(acu.id);
                 setTimeout(() => {
                   this.resAcusados.push(resAcu);
@@ -318,7 +291,7 @@ export class AnimacionComponent implements OnInit {
                 }, 500);
               }
               else if(suerte<0.6){
-                resAcu.procAbre=Math.floor(Math.random() * 2);
+                resAcu.procAbre=10+Math.floor(this.calSimu.getAle() * 5);
                 this.moverProAbre(acu.id);
                 setTimeout(() => {
                   this.resAcusados.push(resAcu);
@@ -326,7 +299,7 @@ export class AnimacionComponent implements OnInit {
                 }, 500);
               }
               else{
-                resAcu.conciliacion=Math.floor(Math.random() * 4);
+                resAcu.conciliacion=10+Math.floor(this.calSimu.getAle() * 4);
                 this.moverConciliacion(acu.id);
                 setTimeout(() => {
                   this.resAcusados.push(resAcu);
@@ -335,8 +308,8 @@ export class AnimacionComponent implements OnInit {
               }
             }, 500);
           }
-          else if(Math.random()<0.85){
-            resAcu.complementacion=Math.floor(Math.random() * 10);
+          else if(this.calSimu.getAle()<0.85){
+            resAcu.complementacion=50+Math.floor(this.calSimu.getAle() * 40);
             this.moverComplementacion(acu.id);
             setTimeout(() => {
               this.resAcusados.push(resAcu);
@@ -349,18 +322,18 @@ export class AnimacionComponent implements OnInit {
               this.moverJuicio(acu.id);
             }, 500);
             setTimeout(() => {
-              resAcu.juicio=Math.floor(Math.random() * 70);
+              resAcu.juicio=31+Math.floor(this.calSimu.getAle() * 40);
               this.moverSentencia(acu.id);
             }, 1000);
             setTimeout(() => {
-              if(Math.random()<0.5){
+              if(this.calSimu.getAle()<0.5){
                 setTimeout(() => {
-                  resAcu.apelacion=resAcu.juicio=25+Math.floor(Math.random() * 25);
+                  resAcu.apelacion=resAcu.juicio=25+Math.floor(this.calSimu.getAle() * 25);
                   this.moverApelacion(acu.id);
                 }, 500);
-                if(Math.random()<0.5){
+                if(this.calSimu.getAle()<0.5){
                   setTimeout(() => {
-                    resAcu.casacion=resAcu.juicio=10+Math.floor(Math.random() * 12);
+                    resAcu.casacion=resAcu.juicio=10+Math.floor(this.calSimu.getAle() * 12);
                     this.moverCasacion(acu.id);
                     setTimeout(() => {
                       this.resAcusados.push(resAcu);
@@ -408,9 +381,9 @@ export class AnimacionComponent implements OnInit {
        var acus={
        id:Id+"",
        Cargos:'allanamiento',
-       Gravedad:(Math.random()<0.5),
-       Antecedentes:(this.si.porAntecedentes<Math.random()*100),
-       Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+       Gravedad:(this.calSimu.getAle()<0.75),
+       Antecedentes:(this.si.porAntecedentes>this.calSimu.getAle()*100),
+       Policica_fiscal:(this.si.porDenuncia>this.calSimu.getAle()*100),
        }
        this.acusados.push(acus);
        Id++;
@@ -419,9 +392,9 @@ export class AnimacionComponent implements OnInit {
       var acus={
         id:Id+"",
         Cargos:'amenaza',
-        Gravedad:false,
-        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
-        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        Gravedad:(this.calSimu.getAle()<0.85),
+        Antecedentes:(this.si.porAntecedentes>this.calSimu.getAle()*100),
+        Policica_fiscal:(this.si.porDenuncia>this.calSimu.getAle()*100),
         }
       this.acusados.push(acus);
       Id++;
@@ -430,9 +403,9 @@ export class AnimacionComponent implements OnInit {
       var acus={
         id:Id+"",
         Cargos:'asesinato',
-        Gravedad:true,
-        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
-        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        Gravedad:(this.calSimu.getAle()<0.25),
+        Antecedentes:(this.si.porAntecedentes>this.calSimu.getAle()*100),
+        Policica_fiscal:(this.si.porDenuncia>this.calSimu.getAle()*100),
         }
       this.acusados.push(acus);
       Id++;
@@ -441,9 +414,9 @@ export class AnimacionComponent implements OnInit {
       var acus={
         id:Id+"",
         Cargos:'conduccionPel',
-        Gravedad:true,
-        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
-        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        Gravedad:(this.calSimu.getAle()<0.80),
+        Antecedentes:(this.si.porAntecedentes>this.calSimu.getAle()*100),
+        Policica_fiscal:(this.si.porDenuncia>this.calSimu.getAle()*100),
         }
       this.acusados.push(acus);
       Id++;
@@ -452,9 +425,9 @@ export class AnimacionComponent implements OnInit {
       var acus={
         id:Id+"",
         Cargos:'estafa',
-        Gravedad:(Math.random()<0.5),
-        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
-        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        Gravedad:(this.calSimu.getAle()<0.5),
+        Antecedentes:(this.si.porAntecedentes>this.calSimu.getAle()*100),
+        Policica_fiscal:(this.si.porDenuncia>this.calSimu.getAle()*100),
         }
       this.acusados.push(acus);
       Id++;
@@ -463,9 +436,9 @@ export class AnimacionComponent implements OnInit {
       var acus={
         id:Id+"",
         Cargos:'otros',
-        Gravedad:false,
-        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
-        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        Gravedad:(this.calSimu.getAle()<0.5),
+        Antecedentes:(this.si.porAntecedentes>this.calSimu.getAle()*100),
+        Policica_fiscal:(this.si.porDenuncia>this.calSimu.getAle()*100),
         }
       this.acusados.push(acus);
       Id++;
@@ -474,9 +447,9 @@ export class AnimacionComponent implements OnInit {
       var acus={
         id:Id+"",
         Cargos:'robo',
-        Gravedad:(Math.random()<0.5),
-        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
-        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        Gravedad:(this.calSimu.getAle()<0.5),
+        Antecedentes:(this.si.porAntecedentes>this.calSimu.getAle()*100),
+        Policica_fiscal:(this.si.porDenuncia>this.calSimu.getAle()*100),
         }
       this.acusados.push(acus);
       Id++;
@@ -486,8 +459,8 @@ export class AnimacionComponent implements OnInit {
         id:Id+"",
         Cargos:'violaciones',
         Gravedad:true,
-        Antecedentes:(this.si.porAntecedentes<Math.random()*100),
-        Policica_fiscal:(this.si.porDenuncia<Math.random()*100),
+        Antecedentes:(this.si.porAntecedentes>this.calSimu.getAle()*100),
+        Policica_fiscal:(this.si.porDenuncia>this.calSimu.getAle()*100),
         }
       this.acusados.push(acus);
       Id++;

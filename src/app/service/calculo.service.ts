@@ -1,45 +1,43 @@
 import { Injectable } from '@angular/core';
-import { SimuService } from './simu.service';
-import { Observable } from 'rxjs';
-import { Simulacion } from '../shared/models/simulacion';
-import { Acusado } from '../shared/models/acusado';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalculoService {
-  constructor(private simuService:SimuService) { }
-  acusados:Acusado[];
-  acusado:Acusado;
-  prueba(){
-   
+  constructor() { 
+    //this.genCuaMedios();
   }
-  crearAcusados(){
-    //allanamiento
-    while(1>0){
-      this.acusado.Antecedentes=this.calcularValor(1);
-      this.acusado.Cargos='allanamiento';
-      this.acusado.Gravedad=false;
-      this.acusado.Policica_fiscal=this.calcularValor(1);
-      this.acusados.push(this.acusado);
-    }
-    console.log(this.acusados);
-  }
-  calcularValor(valor:number){
-    var randon=this.genCong()*100;
-    if(randon<valor){
-      return true;
-    }
-    else{
-      return false;
-    }
-  }
-  genCong(){
+  numAleatorios:number[]=[];
+  pos=0;
+  getAle(){
+    if(this.numAleatorios.length==0) this.genCuaMedios();
     var res=0;
-    const value = (x, a, c, m) => (a * x + Number(c)) % m
-    return res;
+    if(this.pos<this.numAleatorios.length){
+     res=this.numAleatorios[this.pos];
+     this.pos++;
+   }
+   else{
+     this.pos=0;
+     res=this.numAleatorios[this.pos];
+   }
+   return res;
   }
+  
+  
+ genCuaMedios(){
+   var n=4312;
+  for(var i=0;i<100&& n!=0;i++){
+    var numA=n*n;//elava al cuadrado
+    while(numA<10000000) {
+      numA*=10;} //debe ser minimo 8 cifras
+    var strA = "n"+numA; //convierto en string
+    n = parseInt(strA.substring(3,7));//extrae las cifras centrales
+    var r=n/10000;
+    this.numAleatorios.push(r);
+  }
+ }
   
 
 
