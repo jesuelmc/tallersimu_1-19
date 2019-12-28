@@ -18,9 +18,10 @@
   </div>
   <hr class="linea">
 </div>
-<div class="text-center">
+<div id="fullTable"class="text-center">
     <h2>PROMEDIO DE DIAS POR FASES</h2>
-  <table class="table"style="font-size:10">
+    <div id="table1">
+  <table class="table"  style="font-size:10">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Cargos</th>
@@ -44,6 +45,7 @@
       </tr>
     </tbody>
   </table>
+</div>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -70,7 +72,10 @@
   </table>
 </div>
 </div>
-<div class="text-center"><button class="btn btn-primary" width="100%" (click)="downloadImage()">Descargar </button>  </div>
+<div class="text-center"><button class="btn btn-primary" width="100%" (click)="downloadImage()">Descargar PNG </button>  </div>
+<div class="text-center"><button class="btn btn-primary" width="100%" (click)="downloadPDF()">Descargar PDF tablas</button>  </div>
+<!-- <div class="text-center"><button class="btn btn-primary" width="100%" (click)="genPDF()">Descargar PDF</button>  </div> -->
+<div class="text-center"><button class="btn btn-primary" width="100%" (click)="downpdf()">Descargar PDF</button>  </div>
 <div id="download">
   <img #canvas style="visibility: hidden;height:50px">
   <a #downloadLink></a>
